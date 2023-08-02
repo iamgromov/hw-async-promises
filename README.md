@@ -1,17 +1,29 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ryvurlknmejk0mqs?svg=true)](https://ci.appveyor.com/project/iamgromov/hw-async-promises)
 
 # Домашнее задание к лекции «Promises, async/await»
+
 **Важно**: каждая задача выполняется в виде отдельного проекта с собственным GitHub репозиторием.
+
 **Важно**: код должен проходить ESLint без ошибок.
+
 **Важно**: тесты должны обеспечивать 100% покрытие тестируемых функций по строкам.
+
 **Важно**: решения должны быть построены на базе [шаблона Webpack](/ci-template).
+
 В личном кабинете на сайте [netology.ru](http://netology.ru/) в поле комментария к домашней работе вставьте ссылки на ваш GitHub-проекты.
+
 ---
+
 ## Promises
+
 ### Легенда
+
 JavaScript живёт в асинхронном мире и большинство операций в нём так же выполняются асинхронно. Вы реализовали возможность экспорта сохранённого прогресса игры в виде JSON. Теперь нужно реализовать загрузку из файла.
+
 ### Описание
+
 Для вас реализованы функции-заглушки, которая эмулируют чтение файла и преобразование прочитанного в json. Ваша задача - реализовать класс `GameSavingLoader` с методом `load`, который загружает данные (с помощью функции `read`), парсит их (с помощью функции `json()`) и создаёт объект типа `GameSaving`.
+
 Модуль `parser.js`:
 ```javascript
 export default function json(data) {
@@ -23,6 +35,7 @@ export default function json(data) {
   });
 }
 ```
+
 Модуль `reader.js`:
 ```javascript
 export default function read() {
@@ -42,6 +55,7 @@ export default function read() {
   });
 }
 ```
+
 Пример использования класса (если бы это был синхронный код)
 ```javascript
 export default class GameSavingLoader {
@@ -53,6 +67,7 @@ export default class GameSavingLoader {
 }
 ```
 Вам нужно переписать метод `load` так, чтобы он возвращал `Promise` с данными (см. формат ниже).
+
 Спецификации объекта типа `GameSaving`:
 ```javascript
 {
@@ -66,6 +81,7 @@ export default class GameSavingLoader {
   }
 }
 ```
+
 Т.е. итоговый ваш код должен работать так (модуль `app.js`):
 ```javascript
 GameSavingLoader.load().then((saving) => {
